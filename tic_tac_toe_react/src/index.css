@@ -1,0 +1,437 @@
+:root {
+  /* TYPOGRAPHY */
+  --heading-l-size: 4rem;
+  --heading-l-spacing: 0.25rem;
+
+  --heading-m-size: 3.2rem;
+  --heading-m-spacing: 0.15rem;
+
+  --heading-s-size: 2.6rem;
+  --heading-s-spacing: 0.125rem;
+
+  --heading-xs-size: 2rem;
+  --heading-xs-spacing: 0.1rem;
+
+  --heading-bold: bold;
+
+  --paragraph-size: 1.8rem;
+  --paragraph-spacing: 0.08rem;
+  --paragraph-bold: medium;
+
+  /* SPACING */
+
+  /* COLORS */
+  --light-blue: #31c3bd;
+  --light-blue-hover: #65e9e4;
+  --light-blue-inset: #1a8884;
+
+  --light-yellow: #f2b137;
+  --light-yellow-hover: #ffc860;
+  --light-yellow-inset: #bb7f0f;
+
+  --dark-navy: #1a2a33;
+  --semi-dark-navy: #1f3641;
+  --dark-navy-inset: #0e1920;
+  --dark-navy-hover: #a8bfc917;
+
+  --silver: #a8bfc9;
+  --silver-hover: #dbe8ed;
+  --silver-inset: #7b8c94;
+
+  /* OTHER */
+  --radius-15: 1.5rem;
+  --radius-10: 1rem;
+}
+
+#root {
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--dark-navy);
+  font-family: "Outfit", sans-serif;
+  color: var(--silver);
+}
+
+/* GENERAL */
+
+.container {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 56rem;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading-xs {
+  font-size: var(--heading-xs-size);
+  letter-spacing: var(--heading-xs-spacing);
+  font-weight: var(--heading-bold);
+  color: var(--silver);
+}
+
+.heading-s {
+  font-size: var(--heading-s-size);
+  letter-spacing: var(--heading-s-spacing);
+  font-weight: var(--heading-bold);
+  color: var(--silver);
+}
+
+.heading-m {
+  font-size: var(--heading-m-size);
+  letter-spacing: var(--heading-m-spacing);
+  font-weight: var(--heading-bold);
+}
+
+.heading-l {
+  font-size: var(--heading-l-size);
+  letter-spacing: var(--heading-l-spacing);
+  font-weight: var(--heading-bold);
+}
+
+.paragraph-text {
+  font-size: var(--paragraph-size);
+  letter-spacing: var(--paragraph-spacing);
+  font-weight: var(--paragraph-bold);
+  text-align: center;
+}
+
+/* BUTTONS */
+.new-game-btn,
+.media-link {
+  padding: 2rem;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius-15);
+  transition: 0.4s all;
+}
+
+.new-game-btn p {
+  color: var(--dark-navy);
+}
+
+.new-with-cpu,
+.media-link {
+  background-color: var(--light-yellow);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+}
+
+.new-with-cpu:hover {
+  background-color: var(--light-yellow-hover);
+}
+
+.new-with-player {
+  background-color: var(--light-blue);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+}
+
+.new-with-player:hover {
+  background-color: var(--light-blue-hover);
+}
+
+.new-game-btn:hover {
+  cursor: pointer;
+}
+
+/* ------ MENU WINDOW ------*/
+.logo-section {
+  text-align: center;
+}
+.menu-window {
+  display: block;
+  width: 100%;
+}
+
+.pick-player-window {
+  background-color: var(--semi-dark-navy);
+  margin-top: 4rem;
+  padding: 2.4rem;
+  border-radius: var(--radius-15);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+}
+
+.menu-text {
+  text-align: center;
+}
+
+.xo-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--dark-navy);
+  margin: 1.6rem 2.4rem;
+  padding: 0.4rem;
+}
+
+.xo-picker,
+.picker {
+  border-radius: var(--radius-10);
+  overflow: hidden;
+}
+
+.picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: center;
+  padding: 1.6rem;
+  width: 85%;
+  height: 85%;
+}
+
+.picker:hover {
+  cursor: pointer;
+  background-color: var(--dark-navy-hover);
+}
+
+.x-picker {
+  fill: var(--light-blue);
+}
+
+.o-picker {
+  fill: var(--light-yellow);
+}
+
+.picker.active {
+  background-color: var(--silver);
+  fill: var(--dark-navy);
+}
+
+.picker.active:hover {
+  cursor: default;
+}
+
+.test {
+  fill: var(--dark-navy);
+}
+
+.menu-text-reminder {
+  margin-top: 2.4rem;
+}
+
+.btns-new-game-section {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* GAME HEADER */
+.game-header-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.turn-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.6rem 3rem;
+}
+
+.turn-info svg {
+  justify-self: center;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.o-turn-img {
+  display: none;
+}
+
+.reset-game-btn {
+  justify-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border: none;
+  background-color: var(--silver);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  box-shadow: inset 0px -4px 0px 0px var(--silver-inset);
+}
+
+/* GAME */
+.game {
+  display: none;
+  width: 48rem;
+}
+
+.game-field,
+.turn-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--semi-dark-navy);
+  border-radius: var(--radius-15);
+  width: 14rem;
+}
+
+.game-board {
+  display: grid;
+  margin-top: 2rem;
+}
+
+.game-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+.game-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: var(--semi-dark-navy);
+  box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  width: 14rem;
+  height: 14rem;
+  border-radius: var(--radius-15);
+}
+
+.game-field.empty:hover {
+  cursor: pointer;
+}
+
+.game-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.game-stat {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark-navy);
+  padding: 1.2rem 2.1rem;
+  text-align: center;
+  border-radius: var(--radius-15);
+}
+
+.game-stat-player {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+
+.wins-x {
+  background-color: var(--light-blue);
+}
+
+.ties {
+  background-color: var(--silver);
+}
+
+.wins-o {
+  background-color: var(--light-yellow);
+}
+
+/* END GAME PANEL */
+.end-game-panel,
+.reset-game-panel {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0%;
+  /* height: 100px; */
+  background-color: green;
+  text-align: center;
+}
+
+.end-decision-btns,
+.reset-game-btns {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-decision-btn,
+.reset-game-btn-decision {
+  border: none;
+  padding: 1rem 1.7rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--dark-navy);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.end-decision-btn-quit,
+.reset-game-btn-decision-no {
+  background-color: var(--silver);
+  box-shadow: inset 0px -4px 0px 0px var(--silver-inset);
+}
+
+.end-decision-btn-quit:hover,
+.reset-game-btn-decision-no {
+  background-color: var(--silver-hover);
+}
+
+.end-decision-btn-next-round,
+.reset-game-btn-decision-yes {
+  background-color: var(--light-yellow);
+  box-shadow: inset 0px -4px 0px 0px var(--light-yellow-inset);
+}
+
+.end-decision-btn-next-round:hover,
+.reset-game-btn-yes:hover {
+  background-color: var(--light-yellow-hover);
+}
+
+/* MEDIA LINKS */
+.media-links {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.media-link:link,
+.media-link:visited {
+  text-decoration: none;
+  color: var(--dark-navy);
+  min-width: 14rem;
+  text-align: center;
+}
+
+.media-link:hover,
+.media-link:active {
+  transition: 0.2s ease all;
+  background-color: var(--light-yellow-hover);
+}
