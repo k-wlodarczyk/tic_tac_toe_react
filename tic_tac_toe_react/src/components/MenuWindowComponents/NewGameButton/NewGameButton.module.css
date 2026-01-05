@@ -1,0 +1,38 @@
+/* BUTTONS */
+.newGameBtn {
+  padding: 2rem;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius-15);
+  transition: 0.4s all;
+}
+
+.newGameBtn:hover {
+  cursor: pointer;
+}
+
+.newGameBtn p {
+  color: var(--dark-navy);
+}
+
+.newGameBtnCpu {
+  background-color: var(--light-yellow);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--light-yellow-inset);
+}
+
+.newGameBtnCpu:hover {
+  background-color: var(--light-yellow-hover);
+}
+
+.newGameBtnPlayer {
+  background-color: var(--light-blue);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--light-blue-inset);
+}
+
+.newGameBtnPlayer:hover {
+  background-color: var(--light-blue-hover);
+}

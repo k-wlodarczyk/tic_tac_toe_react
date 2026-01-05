@@ -1,0 +1,17 @@
+.pickPlayerWindow {
+  background-color: var(--semi-dark-navy);
+  margin-top: 4rem;
+  padding: 2.4rem;
+  border-radius: var(--radius-15);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+}
+
+.menuText {
+  text-align: center;
+}
+
+.menuTextReminder {
+  margin-top: 2.4rem;
+}

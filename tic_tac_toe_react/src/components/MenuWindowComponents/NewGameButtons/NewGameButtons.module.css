@@ -1,0 +1,6 @@
+.btnsNewGameSection {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

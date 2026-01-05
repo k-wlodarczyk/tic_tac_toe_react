@@ -1,0 +1,9 @@
+.xoPicker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--dark-navy);
+  margin: 1.6rem 2.4rem;
+  padding: 0.4rem;
+}
