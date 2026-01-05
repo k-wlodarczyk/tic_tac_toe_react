@@ -1,0 +1,15 @@
+.gameField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: var(--semi-dark-navy);
+  box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
+  width: 14rem;
+  height: 14rem;
+  border-radius: var(--radius-15);
+}
+
+.gameField.empty:hover {
+  cursor: pointer;
+}

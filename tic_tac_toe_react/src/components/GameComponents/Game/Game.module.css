@@ -1,0 +1,70 @@
+/* GAME */
+.game {
+  /* display: none; */
+  width: 48rem;
+}
+
+.game-field,
+.turn-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--semi-dark-navy);
+  border-radius: var(--radius-15);
+  width: 14rem;
+}
+
+/* END GAME PANEL */
+.end-game-panel,
+.reset-game-panel {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0%;
+  /* height: 100px; */
+  background-color: green;
+  text-align: center;
+}
+
+.end-decision-btns,
+.reset-game-btns {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-decision-btn,
+.reset-game-btn-decision {
+  border: none;
+  padding: 1rem 1.7rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--dark-navy);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.end-decision-btn-quit,
+.reset-game-btn-decision-no {
+  background-color: var(--silver);
+  box-shadow: inset 0px -4px 0px 0px var(--silver-inset);
+}
+
+.end-decision-btn-quit:hover,
+.reset-game-btn-decision-no {
+  background-color: var(--silver-hover);
+}
+
+.end-decision-btn-next-round,
+.reset-game-btn-decision-yes {
+  background-color: var(--light-yellow);
+  box-shadow: inset 0px -4px 0px 0px var(--light-yellow-inset);
+}
+
+.end-decision-btn-next-round:hover,
+.reset-game-btn-yes:hover {
+  background-color: var(--light-yellow-hover);
+}
