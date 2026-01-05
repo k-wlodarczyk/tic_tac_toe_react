@@ -4,16 +4,6 @@
   width: 48rem;
 }
 
-.game-field,
-.turn-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--semi-dark-navy);
-  border-radius: var(--radius-15);
-  width: 14rem;
-}
-
 /* END GAME PANEL */
 .end-game-panel,
 .reset-game-panel {

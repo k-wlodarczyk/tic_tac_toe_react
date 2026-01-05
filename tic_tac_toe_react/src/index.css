@@ -112,32 +112,6 @@ body {
   text-align: center;
 }
 
-/* GAME HEADER */
-.game-header-section {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-}
-
-.o-turn-img {
-  display: none;
-}
-
-.reset-game-btn {
-  justify-self: end;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 5.2rem;
-  height: 5.2rem;
-  border: none;
-  background-color: var(--silver);
-  border-radius: var(--radius-10);
-  cursor: pointer;
-  box-shadow: inset 0px -4px 0px 0px var(--silver-inset);
-}
-
 /* MEDIA LINKS */
 .media-links {
   margin-top: 5rem;

@@ -1,4 +1,5 @@
 .gameField {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +13,20 @@
 
 .gameField.empty:hover {
   cursor: pointer;
+}
+
+.showPlaceholderX:hover::after {
+  content: "";
+  position: absolute;
+  background-image: url("../../../assets/icon-x-outline.svg");
+  width: 64px;
+  height: 64px;
+}
+
+.showPlaceholderO:hover::after {
+  content: "";
+  position: absolute;
+  background-image: url("../../../assets/icon-o-outline.svg");
+  width: 66px;
+  height: 66px;
 }
