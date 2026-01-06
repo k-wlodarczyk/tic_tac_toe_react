@@ -12,7 +12,7 @@ export const WINNING_PATHS = [
 export const checkWinner = function (fields) {
   for (const [a, b, c] of WINNING_PATHS) {
     if (fields[a] && fields[a] === fields[b] && fields[a] === fields[c]) {
-      return fields[a];
+      return { winner: fields[a], path: [a, b, c] };
     }
   }
   return null;

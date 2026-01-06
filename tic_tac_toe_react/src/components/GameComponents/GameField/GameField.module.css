@@ -30,3 +30,11 @@
   width: 66px;
   height: 66px;
 }
+
+.winningFieldX {
+  background-color: #31c3bd;
+}
+
+.winningFieldO {
+  background-color: #f2b137;
+}

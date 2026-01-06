@@ -12,6 +12,7 @@ export default function Game({
   xScore,
   oScore,
   tiesScore,
+  winningPath,
   onFieldClick,
   children,
 }) {
@@ -27,6 +28,7 @@ export default function Game({
         xScore={xScore}
         oScore={oScore}
         tiesScore={tiesScore}
+        winningPath={winningPath}
         onFieldClick={onFieldClick}
       />
       {children}

@@ -11,6 +11,7 @@ export default function GameBoard({
   xScore,
   oScore,
   tiesScore,
+  winningPath,
   onFieldClick,
 }) {
   return (
@@ -18,6 +19,7 @@ export default function GameBoard({
       <GameFields
         activePlayer={activePlayer}
         gameFields={gameFields}
+        winningPath={winningPath}
         onFieldClick={onFieldClick}
       />
       <GameStats

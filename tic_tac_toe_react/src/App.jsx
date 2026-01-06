@@ -22,8 +22,11 @@ function App() {
   const [oScore, setOScore] = useState(0);
   const [tiesScore, setTiesScore] = useState(0);
 
-  const winner = checkWinner(gameFields);
+  const winInfo = checkWinner(gameFields);
   const draw = isDraw(gameFields);
+
+  const winner = winInfo ? winInfo.winner : null;
+  const winningPath = winInfo ? winInfo.path : [];
 
   const playerXLabel = getLabel("x", player1Figure, vsCpu);
   const playerOLabel = getLabel("o", player1Figure, vsCpu);
@@ -32,8 +35,13 @@ function App() {
     activePlayer === "x" ? setActivePlayer("o") : setActivePlayer("x");
   }
 
+  function isCpuTurn() {
+    // return vsCpu && activePlayer === player1Figure ? false : true;
+    return false;
+  }
+
   function handleFieldClick(index) {
-    if (gameFields[index] || winner) return;
+    if (gameFields[index] || winner || isCpuTurn()) return;
     const nextFields = [...gameFields];
     nextFields[index] = activePlayer;
     setGameFields(nextFields);
@@ -103,6 +111,7 @@ function App() {
           xScore={xScore}
           oScore={oScore}
           tiesScore={tiesScore}
+          winningPath={winningPath}
         >
           {finishGamePanelActive && (
             <FinishGamePanel
@@ -123,6 +132,7 @@ function App() {
               secondaryBtnContent="quit"
               onCancel={handleResetGame}
               onConfirm={handleNextRound}
+              winningFigure={winner}
             />
           )}
         </Game>

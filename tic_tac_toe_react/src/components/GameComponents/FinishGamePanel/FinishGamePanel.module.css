@@ -1,14 +1,23 @@
 /* END GAME PANEL */
+.panelOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .finishGamePanel {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   width: 100%;
-  top: 50%;
-  left: 0%;
-  transform: translateY(-50%);
-  background-color: green;
+  background-color: var(--semi-dark-navy);
   text-align: center;
   padding: 4rem;
 }
@@ -20,6 +29,10 @@
 
 .primaryText {
   margin-top: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
 }
 
 .btns {
