@@ -1,0 +1,34 @@
+.finishGamePanelBtn {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 1.6rem 2.4rem;
+  font-size: var(--heading-xs-size);
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--dark-navy);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  transition: 0.3s ease all;
+  text-transform: uppercase;
+}
+
+.ctaBtn {
+  background-color: var(--light-yellow);
+  box-shadow: inset 0px -4px 0px 0px var(--light-yellow-inset);
+}
+
+.ctaBtn:hover {
+  background-color: var(--light-yellow-hover);
+}
+
+.secondaryBtn {
+  background-color: var(--silver);
+  box-shadow: inset 0px -4px 0px 0px var(--silver-inset);
+}
+
+.secondaryBtn:hover {
+  background-color: var(--silver-hover);
+}

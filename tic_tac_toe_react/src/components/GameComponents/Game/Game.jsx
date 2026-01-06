@@ -1,29 +1,24 @@
 import GameBoard from "../GameBoard/GameBoard";
 import styles from "./Game.module.css";
 import GameHeader from "../GameHeader/GameHeader";
-import { useState } from "react";
+import { use, useState } from "react";
 
-export default function Game() {
-  const [activePlayer, setActivePlayer] = useState("x");
-  const [gameFields, setGameFields] = useState(Array(9).fill(null));
-
-  function handleFieldClick(index) {
-    if (gameFields[index]) return;
-    const nextFields = [...gameFields];
-    nextFields[index] = activePlayer;
-    setGameFields(nextFields);
-
-    activePlayer === "x" ? setActivePlayer("o") : setActivePlayer("x");
-  }
-
+export default function Game({
+  onReset,
+  gameFields,
+  activePlayer,
+  onFieldClick,
+  children,
+}) {
   return (
     <section className={styles.game} data-cy="game">
-      <GameHeader activePlayer={activePlayer} />
+      <GameHeader activePlayer={activePlayer} onReset={onReset} />
       <GameBoard
         activePlayer={activePlayer}
         gameFields={gameFields}
-        onFieldClick={handleFieldClick}
+        onFieldClick={onFieldClick}
       />
+      {children}
     </section>
   );
 }

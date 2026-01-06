@@ -3,12 +3,12 @@ import ResetGameBtn from "../ResetGameBtn/ResetGameBtn";
 import logo from "../../../assets/logo.svg";
 import styles from "./GameHeader.module.css";
 
-export default function GameHeader({ activePlayer }) {
+export default function GameHeader({ activePlayer, onReset }) {
   return (
     <section className={styles.gameHeaderSection}>
       <img src={logo} alt="" className="logo-img" />
       <CurrentTurn activePlayer={activePlayer} />
-      <ResetGameBtn />
+      <ResetGameBtn onReset={onReset} />
     </section>
   );
 }
