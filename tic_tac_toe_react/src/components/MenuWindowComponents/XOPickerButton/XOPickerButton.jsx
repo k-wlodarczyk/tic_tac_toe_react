@@ -3,13 +3,13 @@ import clsx from "clsx";
 
 export default function XOPickerButton({
   player1Figure,
-  onPlayer1FigureChange,
+  onClick,
   selection,
   d,
 }) {
   return (
     <button
-      onClick={onPlayer1FigureChange}
+      onClick={onClick}
       className={clsx(styles.picker, styles[selection], {
         [styles.pickerActive]: player1Figure,
       })}

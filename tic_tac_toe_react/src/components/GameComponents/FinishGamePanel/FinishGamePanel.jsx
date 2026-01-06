@@ -6,6 +6,7 @@ export default function FinishGamePanel({
   type,
   winner,
   primaryText,
+  additionalText,
   ctaBtnContent,
   secondaryBtnContent,
   onCancel,
@@ -13,6 +14,9 @@ export default function FinishGamePanel({
 }) {
   return (
     <div className={styles.finishGamePanel}>
+      <p className={clsx("heading-xs", styles.additionalText)}>
+        {additionalText}
+      </p>
       <p className={clsx("heading-l", styles.primaryText)}>{primaryText}</p>
       <div className={styles.btns}>
         <FinishGamePanelBtn type="secondary" onClick={onCancel}>

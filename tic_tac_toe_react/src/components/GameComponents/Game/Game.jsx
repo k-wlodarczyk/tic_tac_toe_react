@@ -1,12 +1,17 @@
 import GameBoard from "../GameBoard/GameBoard";
 import styles from "./Game.module.css";
 import GameHeader from "../GameHeader/GameHeader";
-import { use, useState } from "react";
 
 export default function Game({
   onReset,
   gameFields,
   activePlayer,
+  player1Figure,
+  playerXLabel,
+  playerOLabel,
+  xScore,
+  oScore,
+  tiesScore,
   onFieldClick,
   children,
 }) {
@@ -16,6 +21,12 @@ export default function Game({
       <GameBoard
         activePlayer={activePlayer}
         gameFields={gameFields}
+        player1Figure={player1Figure}
+        playerXLabel={playerXLabel}
+        playerOLabel={playerOLabel}
+        xScore={xScore}
+        oScore={oScore}
+        tiesScore={tiesScore}
         onFieldClick={onFieldClick}
       />
       {children}

@@ -5,8 +5,10 @@ import logo from "../../../assets/logo.svg";
 
 export default function MenuWindow({
   player1Figure,
-  onPlayer1FigureChange,
-  onGameStart,
+  onPlayer1setX,
+  onPlayer1setO,
+  onGameStartVsCpu,
+  onGameStartVsPlayer,
 }) {
   return (
     <section className={styles.menuWindow} data-cy="menu-window">
@@ -15,9 +17,13 @@ export default function MenuWindow({
       </div>
       <PickPlayerWindow
         player1Figure={player1Figure}
-        onPlayer1FigureChange={onPlayer1FigureChange}
+        onPlayer1setX={onPlayer1setX}
+        onPlayer1setO={onPlayer1setO}
       />
-      <NewGameButtons onGameStart={onGameStart} />
+      <NewGameButtons
+        onGameStartVsCpu={onGameStartVsCpu}
+        onGameStartVsPlayer={onGameStartVsPlayer}
+      />
     </section>
   );
 }

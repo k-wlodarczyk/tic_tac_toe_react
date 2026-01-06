@@ -10,11 +10,16 @@
   transform: translateY(-50%);
   background-color: green;
   text-align: center;
-  padding: 6rem;
+  padding: 4rem;
+}
+
+.primaryText,
+.additionalText {
+  text-transform: uppercase;
 }
 
 .primaryText {
-  text-transform: uppercase;
+  margin-top: 1.6rem;
 }
 
 .btns {
