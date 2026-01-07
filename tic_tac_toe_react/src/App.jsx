@@ -1,6 +1,6 @@
 import MenuWindow from "./components/MenuWindowComponents/MenuWindow/MenuWindow";
 import Game from "./components/GameComponents/Game/Game";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FinishGamePanel from "./components/GameComponents/FinishGamePanel/FinishGamePanel";
 import {
   checkWinner,
@@ -8,6 +8,7 @@ import {
   getEndGameProps,
   getLabel,
 } from "./utils/gameLogic";
+import { getIndexMove } from "./utils/cpuMove";
 
 const EMPTY_BOARD = Array(9).fill(null);
 
@@ -36,12 +37,10 @@ function App() {
   }
 
   function isCpuTurn() {
-    // return vsCpu && activePlayer === player1Figure ? false : true;
-    return false;
+    return vsCpu && activePlayer !== player1Figure ? true : false;
   }
 
-  function handleFieldClick(index) {
-    if (gameFields[index] || winner || isCpuTurn()) return;
+  function markField(index) {
     const nextFields = [...gameFields];
     nextFields[index] = activePlayer;
     setGameFields(nextFields);
@@ -50,7 +49,7 @@ function App() {
     const currentDraw = isDraw(nextFields);
 
     if (currentWinner) {
-      currentWinner === "x"
+      currentWinner.winner === "x"
         ? setXScore((prev) => prev + 1)
         : setOScore((prev) => prev + 1);
       return;
@@ -62,6 +61,11 @@ function App() {
     }
 
     changePlayer();
+  }
+
+  function handleFieldClick(index) {
+    if (gameFields[index] || winner || isCpuTurn()) return;
+    markField(index);
   }
 
   function handleStartGame(isVsCpu) {
@@ -95,6 +99,16 @@ function App() {
     playerXLabel,
     playerOLabel
   );
+
+  useEffect(() => {
+    if (!vsCpu) return;
+
+    if (isCpuTurn() && !winner && !draw) {
+      const timeout = setTimeout(() => {
+        markField(getIndexMove(gameFields, player1Figure));
+      }, 600);
+    }
+  }, [activePlayer, vsCpu, winner, draw, gameFields]);
 
   return (
     <>
