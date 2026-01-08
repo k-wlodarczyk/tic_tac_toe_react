@@ -9,14 +9,15 @@ export default function GameField({
   value,
   onSelect,
   activePlayer,
+  isCpuTurn,
   isWinningPathField,
 }) {
   return (
     <button
       className={clsx(styles.gameField, {
-        [styles.empty]: !value,
-        [styles.showPlaceholderX]: !value && activePlayer === "x",
-        [styles.showPlaceholderO]: !value && activePlayer === "o",
+        [styles.empty]: !value && !isCpuTurn,
+        [styles.showPlaceholderX]: !value && !isCpuTurn && activePlayer === "x",
+        [styles.showPlaceholderO]: !value && !isCpuTurn && activePlayer === "o",
         [styles.winningFieldX]: isWinningPathField && activePlayer === "x",
         [styles.winningFieldO]: isWinningPathField && activePlayer === "o",
       })}

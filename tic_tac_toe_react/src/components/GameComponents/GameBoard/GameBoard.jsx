@@ -11,6 +11,7 @@ export default function GameBoard({
   xScore,
   oScore,
   tiesScore,
+  isCpuTurn,
   winningPath,
   onFieldClick,
 }) {
@@ -20,6 +21,7 @@ export default function GameBoard({
         activePlayer={activePlayer}
         gameFields={gameFields}
         winningPath={winningPath}
+        isCpuTurn={isCpuTurn}
         onFieldClick={onFieldClick}
       />
       <GameStats

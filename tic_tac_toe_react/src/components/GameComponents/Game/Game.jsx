@@ -13,6 +13,7 @@ export default function Game({
   oScore,
   tiesScore,
   winningPath,
+  isCpuTurn,
   onFieldClick,
   children,
 }) {
@@ -28,6 +29,7 @@ export default function Game({
         xScore={xScore}
         oScore={oScore}
         tiesScore={tiesScore}
+        isCpuTurn={isCpuTurn}
         winningPath={winningPath}
         onFieldClick={onFieldClick}
       />

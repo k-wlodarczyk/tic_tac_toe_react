@@ -126,6 +126,7 @@ function App() {
           oScore={oScore}
           tiesScore={tiesScore}
           winningPath={winningPath}
+          isCpuTurn={isCpuTurn()}
         >
           {finishGamePanelActive && (
             <FinishGamePanel

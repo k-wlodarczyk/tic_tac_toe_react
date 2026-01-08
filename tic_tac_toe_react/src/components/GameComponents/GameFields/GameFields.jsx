@@ -6,11 +6,9 @@ export default function GameFields({
   activePlayer,
   gameFields,
   winningPath,
+  isCpuTurn,
   onFieldClick,
 }) {
-  // const [gameFields, setGameFields] = useState(Array(9).fill(null));
-  // const [activePlayer, setActivePlayer] = useState("x");
-
   return (
     <div className={styles.gameFields}>
       {gameFields.map((gameField, index) => (
@@ -19,6 +17,7 @@ export default function GameFields({
           value={gameField}
           onSelect={() => onFieldClick(index)}
           activePlayer={activePlayer}
+          isCpuTurn={isCpuTurn}
           isWinningPathField={winningPath.includes(index)}
         />
       ))}
