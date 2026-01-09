@@ -1,4 +1,8 @@
 import styles from "./XOPickerButton.module.css";
+import x from "../../../assets/icon-x.svg";
+import x_navy from "../../../assets/icon-x-winning.svg";
+import o from "../../../assets/icon-o.svg";
+import o_navy from "../../../assets/icon-o-winning.svg";
 import clsx from "clsx";
 
 export default function XOPickerButton({
@@ -14,9 +18,23 @@ export default function XOPickerButton({
         [styles.pickerActive]: player1Figure,
       })}
     >
-      <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+      {selection === "x" && (
+        <img
+          src={player1Figure ? x_navy : x}
+          alt="x"
+          className={styles.pickerIcon}
+        />
+      )}
+      {selection === "o" && (
+        <img
+          src={player1Figure ? o_navy : o}
+          alt="o"
+          className={styles.pickerIcon}
+        />
+      )}
+      {/* <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
         <path d={d} />
-      </svg>
+      </svg> */}
     </button>
   );
 }

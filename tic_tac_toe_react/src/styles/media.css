@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+
+  #root {
+    padding: 0 2rem;
+    max-width: 100vw;
+  }
+}
+
+@media (max-width: 410px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media (max-width: 370px) {
+  html {
+    font-size: 42%;
+  }
+}

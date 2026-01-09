@@ -23,8 +23,20 @@ export default function GameField({
       })}
       onClick={onSelect}
     >
-      {value === "x" && <img src={isWinningPathField ? xWin : x} alt="x" />}
-      {value === "o" && <img src={isWinningPathField ? oWin : o} alt="o" />}
+      {value === "x" && (
+        <img
+          src={isWinningPathField ? xWin : x}
+          alt="x"
+          className={styles.fieldFigureX}
+        />
+      )}
+      {value === "o" && (
+        <img
+          src={isWinningPathField ? oWin : o}
+          alt="o"
+          className={styles.fieldFigureO}
+        />
+      )}
     </button>
   );
 }

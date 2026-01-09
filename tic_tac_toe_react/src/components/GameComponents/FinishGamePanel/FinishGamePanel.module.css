@@ -40,3 +40,30 @@
   display: flex;
   gap: 2.4rem;
 }
+
+@media (max-width: 600px) {
+  .winningFigure {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+
+  .primaryText {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .primaryText {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 370px) {
+  .finishGamePanel {
+    padding: 4rem 3.2rem;
+  }
+
+  .primaryText {
+    font-size: 2.4rem;
+  }
+}

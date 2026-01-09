@@ -6,8 +6,10 @@
   border: none;
   background-color: var(--semi-dark-navy);
   box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
-  width: 14rem;
-  height: 14rem;
+  /* width: 14rem;
+  height: 14rem; */
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-15);
 }
 
@@ -15,20 +17,32 @@
   cursor: pointer;
 }
 
-.showPlaceholderX:hover::after {
-  content: "";
-  position: absolute;
-  background-image: url("../../../assets/icon-x-outline.svg");
-  width: 64px;
-  height: 64px;
+.fieldFigureX {
+  width: 6.4rem;
+  height: 6.4rem;
 }
 
-.showPlaceholderO:hover::after {
-  content: "";
-  position: absolute;
-  background-image: url("../../../assets/icon-o-outline.svg");
-  width: 66px;
-  height: 66px;
+.fieldFigureO {
+  width: 6.6rem;
+  height: 6.6rem;
+}
+
+@media (any-hover: hover) {
+  .showPlaceholderX:hover::after {
+    content: "";
+    position: absolute;
+    background-image: url("../../../assets/icon-x-outline.svg");
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  .showPlaceholderO:hover::after {
+    content: "";
+    position: absolute;
+    background-image: url("../../../assets/icon-o-outline.svg");
+    width: 6.6rem;
+    height: 6.6rem;
+  }
 }
 
 .winningFieldX {

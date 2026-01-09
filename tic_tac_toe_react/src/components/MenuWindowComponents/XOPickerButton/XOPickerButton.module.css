@@ -39,6 +39,11 @@
   fill: var(--light-yellow);
 }
 
+.pickerIcon {
+  width: 6.4rem;
+  height: 6.4rem;
+}
+
 .pickerActive {
   background-color: var(--silver);
   fill: var(--dark-navy);
@@ -48,3 +53,17 @@
   cursor: default;
   background-color: var(--silver);
 }
+/* 
+@media (max-width: 600px) {
+  .pickerIcon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 370px) {
+  .pickerIcon {
+    width: 48px;
+    height: 48px;
+  }
+} */

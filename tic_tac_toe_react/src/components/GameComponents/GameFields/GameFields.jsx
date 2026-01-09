@@ -1,6 +1,5 @@
 import GameField from "../GameField/GameField";
 import styles from "./GameFields.module.css";
-import { useState } from "react";
 
 export default function GameFields({
   activePlayer,

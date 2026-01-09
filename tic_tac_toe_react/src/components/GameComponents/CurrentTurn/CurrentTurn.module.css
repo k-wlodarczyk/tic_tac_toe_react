@@ -2,15 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1.6rem 3rem;
+  gap: 1.3rem;
+  padding: 1.6rem 2.4rem;
   background-color: var(--semi-dark-navy);
   border-radius: var(--radius-15);
   width: 14rem;
 }
 
-.currentTurn svg {
-  justify-self: center;
-  align-self: center;
-  flex-shrink: 0;
+.currentTurnIcon {
+  width: 3.2rem;
+  aspect-ratio: 1 / 1;
 }

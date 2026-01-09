@@ -21,7 +21,11 @@ export default function FinishGamePanel({
         </p>
         <p className={clsx("heading-l", styles.primaryText)}>
           {winningFigure && (
-            <img src={winningFigure === "x" ? x : o} alt="winning figure" />
+            <img
+              src={winningFigure === "x" ? x : o}
+              alt="winning figure"
+              className={styles.winningFigure}
+            />
           )}
 
           {primaryText}
