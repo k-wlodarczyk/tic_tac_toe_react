@@ -41,6 +41,14 @@
   gap: 2.4rem;
 }
 
+.textWinsX {
+  color: var(--light-blue);
+}
+
+.textWinsO {
+  color: var(--light-yellow);
+}
+
 @media (max-width: 600px) {
   .winningFigure {
     width: 4.8rem;
