@@ -43,10 +43,6 @@
   --radius-10: 1rem;
 }
 
-#root {
-  width: 100%;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -66,13 +62,11 @@ body {
 /* GENERAL */
 
 #root {
-  min-height: 100vh;
-  height: auto;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 56rem;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
