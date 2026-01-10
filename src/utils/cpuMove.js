@@ -61,7 +61,7 @@ export const getIndexMove = function (fields, player1Figure) {
   }
 
   if (fields.every((field) => field === null)) {
-    return Math.floor(Math.random() * (fields.length + 1));
+    return Math.floor(Math.random() * fields.length);
   } else {
     const randomIndex = Math.floor(Math.random() * availableFields.length);
     return availableFields[randomIndex];

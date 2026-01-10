@@ -9,7 +9,11 @@ export const WINNING_PATHS = [
   [2, 4, 6],
 ];
 
+const BOARD_SIZE = 9;
+
 export const checkWinner = function (fields) {
+  if (fields.length !== BOARD_SIZE || !areCorrectFields(fields)) return null;
+
   for (const [a, b, c] of WINNING_PATHS) {
     if (fields[a] && fields[a] === fields[b] && fields[a] === fields[c]) {
       return { winner: fields[a], path: [a, b, c] };
@@ -43,30 +47,27 @@ export const getEndGameProps = function (
   if (draw) {
     return { primaryText: "round tied", additionalText: "" };
   }
-  if (winner && vsCpu && player1Figure === winner) {
-    return { primaryText: "takes the round", additionalText: "you won!" };
+
+  if (!winner) {
+    return null;
   }
 
-  if (winner && vsCpu && player1Figure !== winner) {
-    return {
-      primaryText: "takes the round",
-      additionalText: "oh no, you lost...",
-    };
+  let additionalText = "";
+
+  if (vsCpu) {
+    additionalText =
+      player1Figure === winner ? "you won!" : "oh no, you lost...";
+  } else {
+    additionalText =
+      winner === "x" ? `${playerXLabel} wins!` : `${playerOLabel} wins!`;
   }
 
-  if (winner && !vsCpu && winner === "x") {
-    return {
-      primaryText: "takes the round",
-      additionalText: `${playerXLabel} wins!`,
-    };
-  }
+  return { primaryText: "takes the round", additionalText };
+};
 
-  if (winner && !vsCpu && winner === "o") {
-    return {
-      primaryText: "takes the round",
-      additionalText: `${playerOLabel} wins!`,
-    };
-  }
-
-  return null;
+const areCorrectFields = function (fields) {
+  const allCorrectFields = fields.every(
+    (field) => field === "x" || field === "o" || field === null
+  );
+  return allCorrectFields;
 };
