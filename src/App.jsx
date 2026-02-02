@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MenuWindow from "./components/MenuWindowComponents/MenuWindow/MenuWindow";
 import Game from "./components/GameComponents/Game/Game";
 import { useEffect, useState } from "react";
@@ -9,6 +10,8 @@ import {
   getLabel,
 } from "./utils/gameLogic";
 import { getIndexMove } from "./utils/cpuMove";
+import MediaLinks from "./components/MediaLinksComponents/MediaLinks/MediaLinks";
+import TestCases from "./components/TestCasesComponents/TestCases/TestCases";
 
 const EMPTY_BOARD = Array(9).fill(null);
 
@@ -97,70 +100,84 @@ function App() {
     vsCpu,
     player1Figure,
     playerXLabel,
-    playerOLabel
+    playerOLabel,
   );
 
   useEffect(() => {
     if (!vsCpu) return;
 
     if (isCpuTurn() && !winner && !draw) {
-      const timeout = setTimeout(() => {
+      setTimeout(() => {
         markField(getIndexMove(gameFields, player1Figure));
       }, 600);
     }
   }, [activePlayer, vsCpu, winner, draw, gameFields]);
 
   return (
-    <>
-      {gameStarted ? (
-        <Game
-          onReset={() => setFinishGamePanelActive(true)}
-          activePlayer={activePlayer}
-          gameFields={gameFields}
-          onFieldClick={handleFieldClick}
-          player1Figure={player1Figure}
-          playerXLabel={playerXLabel}
-          playerOLabel={playerOLabel}
-          vsCpu={vsCpu}
-          xScore={xScore}
-          oScore={oScore}
-          tiesScore={tiesScore}
-          winningPath={winningPath}
-          isCpuTurn={isCpuTurn()}
-        >
-          {finishGamePanelActive && (
-            <FinishGamePanel
-              type="restart"
-              primaryText="restart game?"
-              ctaBtnContent="yes, restart"
-              secondaryBtnContent="no, cancel"
-              onCancel={() => setFinishGamePanelActive(false)}
-              onConfirm={handleResetGame}
-            />
-          )}
-          {endGameProps && (
-            <FinishGamePanel
-              type="finish"
-              additionalText={endGameProps.additionalText}
-              primaryText={endGameProps.primaryText}
-              ctaBtnContent="next round"
-              secondaryBtnContent="quit"
-              onCancel={handleResetGame}
-              onConfirm={handleNextRound}
-              winningFigure={winner}
-            />
-          )}
-        </Game>
-      ) : (
-        <MenuWindow
-          player1Figure={player1Figure}
-          onPlayer1setX={() => setPlayer1Figure("x")}
-          onPlayer1setO={() => setPlayer1Figure("o")}
-          onGameStartVsCpu={() => handleStartGame(true)}
-          onGameStartVsPlayer={() => handleStartGame(false)}
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              {gameStarted ? (
+                <Game
+                  onReset={() => setFinishGamePanelActive(true)}
+                  activePlayer={activePlayer}
+                  gameFields={gameFields}
+                  onFieldClick={handleFieldClick}
+                  player1Figure={player1Figure}
+                  playerXLabel={playerXLabel}
+                  playerOLabel={playerOLabel}
+                  vsCpu={vsCpu}
+                  xScore={xScore}
+                  oScore={oScore}
+                  tiesScore={tiesScore}
+                  winningPath={winningPath}
+                  isCpuTurn={isCpuTurn()}
+                >
+                  {finishGamePanelActive && (
+                    <FinishGamePanel
+                      type="restart"
+                      primaryText="restart game?"
+                      ctaBtnContent="yes, restart"
+                      secondaryBtnContent="no, cancel"
+                      onCancel={() => setFinishGamePanelActive(false)}
+                      onConfirm={handleResetGame}
+                    />
+                  )}
+                  {endGameProps && (
+                    <FinishGamePanel
+                      type="finish"
+                      additionalText={endGameProps.additionalText}
+                      primaryText={endGameProps.primaryText}
+                      ctaBtnContent="next round"
+                      secondaryBtnContent="quit"
+                      onCancel={handleResetGame}
+                      onConfirm={handleNextRound}
+                      winningFigure={winner}
+                    />
+                  )}
+                </Game>
+              ) : (
+                <>
+                  <MenuWindow
+                    player1Figure={player1Figure}
+                    onPlayer1setX={() => setPlayer1Figure("x")}
+                    onPlayer1setO={() => setPlayer1Figure("o")}
+                    onGameStartVsCpu={() => handleStartGame(true)}
+                    onGameStartVsPlayer={() => handleStartGame(false)}
+                  />
+                  <MediaLinks />
+                </>
+              )}
+            </>
+          }
         />
-      )}
-    </>
+
+        <Route path="/tests" element={<TestCases />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

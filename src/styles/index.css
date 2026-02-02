@@ -51,6 +51,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -62,14 +63,14 @@ body {
 /* GENERAL */
 
 #root {
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 56rem;
+  padding: 2rem 0;
   margin-left: auto;
   margin-right: auto;
-  justify-content: center;
+  justify-content: safe center;
   align-items: center;
 }
 

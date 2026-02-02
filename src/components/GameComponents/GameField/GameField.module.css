@@ -6,8 +6,6 @@
   border: none;
   background-color: var(--semi-dark-navy);
   box-shadow: inset 0px -9px 0px 0px var(--dark-navy-inset);
-  /* width: 14rem;
-  height: 14rem; */
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-15);

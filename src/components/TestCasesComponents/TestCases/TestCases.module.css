@@ -1,0 +1,57 @@
+.test-cases-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mainHeader {
+  margin-top: 2rem;
+}
+
+.areaLinks {
+  margin-top: 2rem;
+}
+
+.areaList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.areaElement a:link,
+.areaElement a:visited {
+  color: inherit;
+  font-size: var(--heading-s-size);
+  text-underline-offset: 0.7rem;
+}
+
+.areaHeading {
+  margin-top: 3.2rem;
+  scroll-margin-top: 2rem;
+}
+
+.backToMainPageBtn {
+  width: 100%;
+  padding: 2rem;
+  font-family: inherit;
+  text-align: center;
+  border: none;
+  border-radius: var(--radius-15);
+  transition: 0.4s all;
+  background-color: var(--silver);
+  -webkit-box-shadow: inset 0px -9px 0px 0px var(--silver-inset);
+  -moz-box-shadow: inset 0px -9px 0px 0px var(--silver-inset);
+  box-shadow: inset 0px -9px 0px 0px var(--silver-inset);
+  color: var(--dark-navy);
+  text-decoration: none;
+}
+
+@media (any-hover: hover) {
+  .backToMainPageBtn:hover,
+  .backToMainPageBtn:active {
+    cursor: pointer;
+    background-color: var(--silver-hover);
+  }
+}

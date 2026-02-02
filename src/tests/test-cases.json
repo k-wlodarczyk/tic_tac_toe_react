@@ -1,0 +1,123 @@
+[
+  {
+    "area": "load page",
+    "description": "Main menu loads correctly on page load.",
+    "steps": ["Open app"],
+    "expected_result": "After loading the app, the main menu should be visible. Available elements: Pick player 1's mark, new game buttons (vs cpu, vs player)"
+  },
+  {
+    "area": "load page",
+    "description": "Mark X is selected by default on page load.",
+    "steps": ["Open app"],
+    "expected_result": "After loading the app, player 1's mark X should be selected by default."
+  },
+  {
+    "area": "load page",
+    "description": "Game board is not visible on load page.",
+    "steps": ["Open app"],
+    "expected_result": "After loading the app, the game board should not be visible. The board appears only after starting a new game."
+  },
+  {
+    "area": "menu interaction",
+    "description": "Selecting player 1's mark updates the selection.",
+    "steps": [
+      "Open app",
+      "Select player 1's mark O",
+      "Select player 1's mark X"
+    ],
+    "expected_result": "After selecting player 1's mark O, O should be selected. After selecting player 1's mark X, X should be selected."
+  },
+  {
+    "area": "menu interaction",
+    "description": "Selecting already selected player 1's mark does not change selection.",
+    "steps": [
+      "Open app",
+      "Select player 1's mark O",
+      "Select player 1's mark O"
+    ],
+    "expected_result": "After selecting player 1's mark O the first time, O should be selected. After selecting O again, O should remain selected."
+  },
+  {
+    "area": "menu interaction",
+    "description": "Starting a new game vs CPU displays the game board.",
+    "steps": ["Open app", "Click 'New Game vs CPU' button"],
+    "expected_result": "After clicking the 'New Game vs CPU' button, the game board should be visible. Menu should disappear."
+  },
+  {
+    "area": "menu interaction",
+    "description": "Starting a new game vs Player displays the game board.",
+    "steps": ["Open app", "Click 'New Game vs Player' button"],
+    "expected_result": "After clicking the 'New Game vs Player' button, the game board should be visible. Menu should disappear."
+  },
+  {
+    "area": "game board loading",
+    "description": "Game stats X wins, O wins, and Ties are initialized to 0.",
+    "steps": ["Open app", "Start a new game (random button)"],
+    "expected_result": "After starting a new game, the game stats should show X wins: 0, Ties: 0, O wins: 0. "
+  },
+  {
+    "area": "game board loading",
+    "description": "Current turn always shows X after starting a new game.",
+    "steps": [
+      "Open app",
+      "Select player 1's mark X",
+      "Start a new game (random button)",
+      "Back to main menu",
+      "Select player 1's mark O",
+      "Start a new game (random button)"
+    ],
+    "expected_result": "Game board should always show current turn as X after starting a new game, regardless of player 1's selected mark."
+  },
+  {
+    "area": "game board loading",
+    "description": "All game fields are empty at the start of a new game.",
+    "steps": ["Open app", "Start a new game (random button)"],
+    "expected_result": "After starting a new game, all 9 fields on the game board should be empty."
+  },
+  {
+    "area": "game board loading",
+    "description": "Game stats vs CPU shows 'YOU' and 'CPU' labels.",
+    "steps": [
+      "Open app",
+      "Select X as player 1's mark",
+      "Start a new game vs CPU",
+      "Back to main menu",
+      "Select O as player 1's mark",
+      "Start a new game vs CPU"
+    ],
+    "expected_result": "After step 3, game stats have labels: X (YOU), Ties, O (CPU). After step 6, game stats show: X (CPU), Ties, O (YOU)."
+  },
+  {
+    "area": "game board loading",
+    "description": "Game stats vs Player shows 'PLAYER 1' and 'PLAYER 2' labels.",
+    "steps": [
+      "Open app",
+      "Select X as player 1's mark",
+      "Start a new game vs Player",
+      "Back to main menu",
+      "Select O as player 1's mark",
+      "Start a new game vs Player"
+    ],
+    "expected_result": "`After step 3, game stats have labels: X (PLAYER 1), Ties, O (PLAYER 2). After step 6, game stats show: X (PLAYER 2), Ties, O (PLAYER 1)."
+  },
+  {
+    "area": "game board loading",
+    "description": "Back to main menu button returns to the main menu.",
+    "steps": [
+      "Open app",
+      "Start a new game (random button)",
+      "Click 'Back to main menu' button"
+    ],
+    "expected_result": "After clicking the 'Back to main menu' button, the main menu should be visible again."
+  },
+  {
+    "area": "game logic",
+    "description": "Filled fields cannot be overwritten.",
+    "steps": [
+      "Start a new game vs player",
+      "Click on an empty field to place a mark",
+      "Click on the same field again"
+    ],
+    "expected_result": "After the first click, the selected field should display the current player's mark. After the second click on the same field, the mark should remain unchanged."
+  }
+]

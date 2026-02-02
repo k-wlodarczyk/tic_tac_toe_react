@@ -1,0 +1,24 @@
+.testCaseWindow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  width: 100%;
+  padding: 2rem 3.2rem;
+  margin: 2rem 0;
+  background-color: var(--semi-dark-navy);
+  border-radius: var(--radius-15);
+
+  font-size: 1.6rem;
+}
+
+ol {
+  list-style-position: inside;
+  font-size: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+p {
+  line-height: 1.3;
+}
