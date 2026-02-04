@@ -6,7 +6,7 @@ export default function NewGameButtons({
   onGameStartVsPlayer,
 }) {
   return (
-    <div className={styles.btnsNewGameSection} data-cy="btns-new-game-section">
+    <div className={styles.btnsNewGameSection}>
       <NewGameButton onClick={onGameStartVsCpu} vsCpu={true}>
         NEW GAME (VS CPU)
       </NewGameButton>

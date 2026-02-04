@@ -18,7 +18,7 @@ export default function Game({
   children,
 }) {
   return (
-    <section className={styles.game} data-cy="game">
+    <section className={styles.game} data-testid="game">
       <GameHeader activePlayer={activePlayer} onReset={onReset} />
       <GameBoard
         activePlayer={activePlayer}

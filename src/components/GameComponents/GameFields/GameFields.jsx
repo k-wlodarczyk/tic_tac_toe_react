@@ -9,7 +9,7 @@ export default function GameFields({
   onFieldClick,
 }) {
   return (
-    <div className={styles.gameFields}>
+    <div className={styles.gameFields} data-testid="game-fields">
       {gameFields.map((gameField, index) => (
         <GameField
           key={index}

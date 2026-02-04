@@ -11,7 +11,7 @@ export default function MenuWindow({
   onGameStartVsPlayer,
 }) {
   return (
-    <section className={styles.menuWindow} data-cy="menu-window">
+    <section className={styles.menuWindow} data-testid="menu-window">
       <div className={styles.logoSection}>
         <img src={logo} alt="Tic Tac Toe logo" className="logo-img" />
       </div>

@@ -5,12 +5,7 @@ import o from "../../../assets/icon-o.svg";
 import o_navy from "../../../assets/icon-o-winning.svg";
 import clsx from "clsx";
 
-export default function XOPickerButton({
-  player1Figure,
-  onClick,
-  selection,
-  d,
-}) {
+export default function XOPickerButton({ player1Figure, onClick, selection }) {
   return (
     <button
       onClick={onClick}
@@ -32,9 +27,6 @@ export default function XOPickerButton({
           className={styles.pickerIcon}
         />
       )}
-      {/* <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-        <path d={d} />
-      </svg> */}
     </button>
   );
 }
