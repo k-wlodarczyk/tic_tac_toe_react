@@ -50,13 +50,13 @@
     "expected_result": "After clicking the 'New Game vs Player' button, the game board should be visible. Menu should disappear."
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "Game stats X wins, O wins, and Ties are initialized to 0.",
     "steps": ["Open app", "Start a new game (random button)"],
     "expected_result": "After starting a new game, the game stats should show X wins: 0, Ties: 0, O wins: 0. "
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "Current turn always shows X after starting a new game.",
     "steps": [
       "Open app",
@@ -69,13 +69,13 @@
     "expected_result": "Game board should always show current turn as X after starting a new game, regardless of player 1's selected mark."
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "All game fields are empty at the start of a new game.",
     "steps": ["Open app", "Start a new game (random button)"],
     "expected_result": "After starting a new game, all 9 fields on the game board should be empty."
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "Game stats vs CPU shows 'YOU' and 'CPU' labels.",
     "steps": [
       "Open app",
@@ -88,7 +88,7 @@
     "expected_result": "After step 3, game stats have labels: X (YOU), Ties, O (CPU). After step 6, game stats show: X (CPU), Ties, O (YOU)."
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "Game stats vs Player shows 'PLAYER 1' and 'PLAYER 2' labels.",
     "steps": [
       "Open app",
@@ -101,7 +101,7 @@
     "expected_result": "`After step 3, game stats have labels: X (PLAYER 1), Ties, O (PLAYER 2). After step 6, game stats show: X (PLAYER 2), Ties, O (PLAYER 1)."
   },
   {
-    "area": "game board loading",
+    "area": "start game",
     "description": "Back to main menu button returns to the main menu.",
     "steps": [
       "Open app",
@@ -119,5 +119,75 @@
       "Click on the same field again"
     ],
     "expected_result": "After the first click, the selected field should display the current player's mark. After the second click on the same field, the mark should remain unchanged."
+  },
+
+  {
+    "area": "local storage",
+    "description": "Player 1's mark does not change after refreshing",
+    "steps": [
+      "Refresh the app",
+      "Select player 1's mark O",
+      "Refresh the app",
+      "Select player 1's mark X",
+      "Refresh the app"
+    ],
+    "expected_result": "Player 1's mark is remembered after the app refreshing the app. After step 1 player 1's mark is X, after step 2 is O and after step 3 is X"
+  },
+
+  {
+    "area": "local storage",
+    "description": "App does not back to main menu after refreshing during game.",
+    "steps": ["Start a new game (random button)", "Refresh the app"],
+    "expected_result": "After step 1 menu window disappears and the game board is visible. After step 2 game board is still visible and menu window is hidden"
+  },
+  {
+    "area": "local storage",
+    "description": "Player turn does not change after refreshing.",
+    "steps": [
+      "Start a new game vs player",
+      "Make a move on x turn",
+      "Refresh the app"
+    ],
+    "expected_result": "After x move, the current turn is O. Refreshing the app does not change the turn."
+  },
+  {
+    "area": "local storage",
+    "description": "Filled game fields remain filled after refreshing.",
+    "steps": [
+      "Start a new game (random button)",
+      "Make some fields filled without finishing the game",
+      "Refresh the app"
+    ],
+    "expected_result": "Game fields should not lose their fullfillment. Game board should look the same before and after refreshing."
+  },
+  {
+    "area": "local storage",
+    "description": "Game stats remain their value after refreshing.",
+    "steps": [
+      "Start a new game vs player",
+      "Play some games to increase all game stats (x wins, ties and o wins) to at least 1",
+      "Refresh the app"
+    ],
+    "expected_result": "Game stats remain their values"
+  },
+  {
+    "area": "local storage",
+    "description": "Restart game panel does not disappear after refreshing.",
+    "steps": [
+      "Start a new game (random button)",
+      "Click restart button",
+      "Refresh the app"
+    ],
+    "expected_result": "After clicking the restart button, restart game panel appears. After refreshing the app, restart game panel is still visible."
+  },
+  {
+    "area": "local storage",
+    "description": "Finish game panel does not disappear after refreshing.",
+    "steps": [
+      "Start a new game (random button)",
+      "Play full game to getting the winner",
+      "Refresh the app"
+    ],
+    "expected_result": "After finishing the game, finish game panel appears. After refreshing the app, the panel is still visible."
   }
 ]

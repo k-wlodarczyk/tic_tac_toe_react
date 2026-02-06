@@ -181,3 +181,91 @@ test.describe("game board loading", () => {
     await expect(oLabel).toHaveText("o (player 1)");
   });
 });
+
+test.describe("local storage", () => {
+  let buttonX: Locator;
+  let buttonO: Locator;
+  let vsCpuBtn: Locator;
+  let vsPlayerBtn: Locator;
+  let menuWindow: Locator;
+  let gameBoard: Locator;
+  let gameFields: Locator;
+  let xTurnImg: Locator;
+  let oTurnImg: Locator;
+  let xScore: Locator;
+  let oScore: Locator;
+  let ties: Locator;
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:5173");
+
+    buttonX = page.getByRole("button", { name: "x" });
+    buttonO = page.getByRole("button", { name: "o" });
+    vsCpuBtn = page.getByRole("button", { name: "NEW GAME (VS CPU)" });
+    vsPlayerBtn = page.getByRole("button", { name: "NEW GAME (VS PLAYER)" });
+    menuWindow = page.getByTestId("menu-window");
+    gameBoard = page.getByTestId("game");
+    gameFields = page.getByTestId("game-fields");
+    xTurnImg = page.getByRole("img", { name: "x turn" });
+    oTurnImg = page.getByRole("img", { name: "o turn" });
+    xScore = page.getByTestId("x-score");
+    oScore = page.getByTestId("o-score");
+    ties = page.getByTestId("ties");
+  });
+
+  test("Player 1's mark does not change after refreshing", async ({ page }) => {
+    await page.reload();
+    await expect(buttonX).toHaveClass(/pickerActive/);
+
+    await buttonO.click();
+    await page.reload();
+
+    await expect(buttonX).not.toHaveClass(/pickerActive/);
+    await expect(buttonO).toHaveClass(/pickerActive/);
+
+    await buttonX.click();
+    await page.reload();
+
+    await expect(buttonX).toHaveClass(/pickerActive/);
+    await expect(buttonO).not.toHaveClass(/pickerActive/);
+  });
+
+  test("App does not back to main menu after refreshing during game", async ({
+    page,
+  }) => {
+    await vsCpuBtn.click();
+    await page.reload();
+
+    await expect(menuWindow).not.toBeVisible();
+    await expect(gameBoard).toBeVisible();
+  });
+
+  test("Player turn does not change after refreshing", async ({ page }) => {
+    await vsPlayerBtn.click();
+    await gameFields.getByRole("button").nth(4).click();
+    await expect(oTurnImg).toBeVisible();
+
+    await page.reload();
+
+    await expect(xTurnImg).not.toBeVisible();
+    await expect(oTurnImg).toBeVisible();
+  });
+
+  test("Filled game fields remain filled after refreshing", async ({
+    page,
+  }) => {
+    const gameField = gameFields.locator("button");
+
+    await vsPlayerBtn.click();
+    await gameField.nth(0).click();
+    await gameField.nth(3).click();
+    await gameField.nth(2).click();
+
+    page.reload();
+
+    await expect(gameFields).toBeVisible();
+    await expect(gameField.nth(0).locator("img")).toHaveCount(1);
+    await expect(gameField.nth(2).locator("img")).toHaveCount(1);
+    await expect(gameField.nth(3).locator("img")).toHaveCount(1);
+  });
+});

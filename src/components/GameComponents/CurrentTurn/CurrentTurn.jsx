@@ -9,7 +9,7 @@ export default function CurrentTurn({ activePlayer }) {
       {
         <img
           src={activePlayer === "x" ? x : o}
-          alt="x turn"
+          alt={activePlayer === "x" ? "x turn" : "o turn"}
           className={styles.currentTurnIcon}
         />
       }
