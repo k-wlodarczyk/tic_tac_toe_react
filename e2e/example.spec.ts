@@ -261,11 +261,60 @@ test.describe("local storage", () => {
     await gameField.nth(3).click();
     await gameField.nth(2).click();
 
-    page.reload();
+    await page.reload();
 
     await expect(gameFields).toBeVisible();
     await expect(gameField.nth(0).locator("img")).toHaveCount(1);
     await expect(gameField.nth(2).locator("img")).toHaveCount(1);
     await expect(gameField.nth(3).locator("img")).toHaveCount(1);
+  });
+
+  test("Game stats remain their value after refreshing", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem("xScore", "5");
+      window.localStorage.setItem("tiesScore", "13");
+      window.localStorage.setItem("oScore", "4");
+    });
+    await page.reload();
+
+    await vsPlayerBtn.click();
+    await page.reload();
+
+    await expect(xScore).toHaveText("5");
+    await expect(ties).toHaveText("13");
+    await expect(oScore).toHaveText("4");
+  });
+
+  test("Restart game panel does not disappear after refreshing", async ({
+    page,
+  }) => {
+    await vsCpuBtn.click();
+
+    const restartGameBtn = page.getByTestId("back-to-menu-btn");
+    const finishGamePanel = page.getByTestId("finish-game-panel");
+
+    await restartGameBtn.click();
+    await expect(finishGamePanel).toBeVisible();
+
+    await page.reload();
+    await expect(finishGamePanel).toBeVisible();
+  });
+
+  test("Finish game panel does not disappear after refreshing", async ({
+    page,
+  }) => {
+    await vsPlayerBtn.click();
+
+    const finishGamePanel = page.getByTestId("finish-game-panel");
+    await gameFields.locator("button").nth(0).click();
+    await gameFields.locator("button").nth(3).click();
+    await gameFields.locator("button").nth(1).click();
+    await gameFields.locator("button").nth(4).click();
+    await gameFields.locator("button").nth(2).click(); // X win in first row
+
+    await expect(finishGamePanel).toBeVisible();
+
+    page.reload();
+    await expect(finishGamePanel).toBeVisible();
   });
 });

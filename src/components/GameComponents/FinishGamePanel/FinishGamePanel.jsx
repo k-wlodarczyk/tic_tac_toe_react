@@ -15,7 +15,7 @@ export default function FinishGamePanel({
 }) {
   return (
     <div className={styles.panelOverlay}>
-      <div className={styles.finishGamePanel}>
+      <div className={styles.finishGamePanel} data-testid="finish-game-panel">
         <p className={clsx("heading-xs", styles.additionalText)}>
           {additionalText}
         </p>
