@@ -15,16 +15,41 @@ import TestCases from "./components/TestCasesComponents/TestCases/TestCases";
 
 const EMPTY_BOARD = Array(9).fill(null);
 
+function getLocalStorageItem(key, defaultValue) {
+  const localStorageItem = localStorage.getItem(key);
+  if (localStorageItem === null) {
+    return defaultValue;
+  }
+
+  try {
+    return JSON.parse(localStorageItem);
+  } catch {
+    return localStorageItem;
+  }
+}
+
 function App() {
-  const [player1Figure, setPlayer1Figure] = useState("x");
-  const [gameStarted, setGameStarted] = useState(false);
-  const [finishGamePanelActive, setFinishGamePanelActive] = useState(false);
-  const [gameFields, setGameFields] = useState(EMPTY_BOARD);
-  const [activePlayer, setActivePlayer] = useState("x");
-  const [vsCpu, setVsCpu] = useState(null);
-  const [xScore, setXScore] = useState(0);
-  const [oScore, setOScore] = useState(0);
-  const [tiesScore, setTiesScore] = useState(0);
+  const [player1Figure, setPlayer1Figure] = useState(() =>
+    getLocalStorageItem("player1Figure", "x"),
+  );
+  const [gameStarted, setGameStarted] = useState(() =>
+    getLocalStorageItem("gameStarted", false),
+  );
+  const [finishGamePanelActive, setFinishGamePanelActive] = useState(() =>
+    getLocalStorageItem("finishGamePanelActive", false),
+  );
+  const [gameFields, setGameFields] = useState(() =>
+    getLocalStorageItem("gameFields", EMPTY_BOARD),
+  );
+  const [activePlayer, setActivePlayer] = useState(() =>
+    getLocalStorageItem("activePlayer", "x"),
+  );
+  const [vsCpu, setVsCpu] = useState(() => getLocalStorageItem("vsCpu", null));
+  const [xScore, setXScore] = useState(() => getLocalStorageItem("xScore", 0));
+  const [oScore, setOScore] = useState(() => getLocalStorageItem("oScore", 0));
+  const [tiesScore, setTiesScore] = useState(() =>
+    getLocalStorageItem("tiesScore", 0),
+  );
 
   const winInfo = checkWinner(gameFields);
   const draw = isDraw(gameFields);
@@ -104,8 +129,30 @@ function App() {
   );
 
   useEffect(() => {
-    if (!vsCpu) return;
+    localStorage.setItem("gameStarted", JSON.stringify(gameStarted));
+    localStorage.setItem("player1Figure", player1Figure);
+    localStorage.setItem("activePlayer", activePlayer);
+    localStorage.setItem("gameFields", JSON.stringify(gameFields));
+    localStorage.setItem(
+      "finishGamePanelActive",
+      JSON.stringify(finishGamePanelActive),
+    );
+    localStorage.setItem("vsCpu", JSON.stringify(vsCpu));
+    localStorage.setItem("xScore", JSON.stringify(xScore));
+    localStorage.setItem("oScore", JSON.stringify(oScore));
+    localStorage.setItem("tiesScore", JSON.stringify(tiesScore));
+  }, [
+    gameStarted,
+    player1Figure,
+    activePlayer,
+    finishGamePanelActive,
+    xScore,
+    oScore,
+    tiesScore,
+  ]);
 
+  useEffect(() => {
+    if (!vsCpu) return;
     if (isCpuTurn() && !winner && !draw) {
       setTimeout(() => {
         markField(getIndexMove(gameFields, player1Figure));

@@ -2,7 +2,7 @@ import { test, expect, Locator } from "@playwright/test";
 
 test.describe("load page", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:5173/");
+    await page.goto("/");
   });
 
   test("Main menu loads correctly on page load", async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe("load page", () => {
     const buttonX = page.getByRole("button", { name: "x" });
     const buttonO = page.getByRole("button", { name: "o" });
 
-    await expect(buttonX).toHaveClass(/.*pickerActive.*/);
+    await expect(buttonX).toHaveClass(/pickerActive/);
     await expect(buttonO).not.toHaveClass(/.*pickerActive.*/);
   });
 
@@ -27,7 +27,7 @@ test.describe("menu interaction", () => {
   let buttonO: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:5173/");
+    await page.goto("/");
 
     buttonX = page.getByRole("button", { name: "x" });
     buttonO = page.getByRole("button", { name: "o" });
@@ -78,7 +78,7 @@ test.describe("game board loading", () => {
   let backToMenuBtn: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:5173/");
+    await page.goto("/");
 
     buttonX = page.getByRole("button", { name: "x" });
     buttonO = page.getByRole("button", { name: "o" });
@@ -197,7 +197,7 @@ test.describe("local storage", () => {
   let ties: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:5173");
+    await page.goto("/");
 
     buttonX = page.getByRole("button", { name: "x" });
     buttonO = page.getByRole("button", { name: "o" });
