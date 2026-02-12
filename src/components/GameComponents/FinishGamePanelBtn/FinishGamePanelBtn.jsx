@@ -9,6 +9,7 @@ export default function FinishGamePanelBtn({ type, children, onClick }) {
         [styles.secondaryBtn]: type === "secondary",
       })}
       onClick={onClick}
+      data-testid={type === "primary" ? "primary-btn" : "secondary-btn"}
     >
       {children}
     </button>

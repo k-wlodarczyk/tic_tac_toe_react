@@ -110,15 +110,123 @@
     ],
     "expected_result": "After clicking the 'Back to main menu' button, the main menu should be visible again."
   },
+
   {
-    "area": "game logic",
-    "description": "Filled fields cannot be overwritten.",
+    "area": "cpu moves algorithm",
+    "description": "cpu occupies the middle field if possible",
+    "steps": ["Select O as player 1's mark", "Start a new game vs cpu"],
+    "expected_result": "Cpu has priority to occupy the middle field on game start. After starting game, cpu sets X in the middle field."
+  },
+
+  {
+    "area": "cpu moves algorithm",
+    "description": "cpu occupies random corner field if the middle one is already occupied",
     "steps": [
-      "Start a new game vs player",
-      "Click on an empty field to place a mark",
-      "Click on the same field again"
+      "Select X as player 1's mark",
+      "Start a new game vs cpu",
+      "Click the middle field"
     ],
-    "expected_result": "After the first click, the selected field should display the current player's mark. After the second click on the same field, the mark should remain unchanged."
+    "expected_result": "The next priority if the middle field is occupied are corner fields. Cpu sets their mark on random corner field."
+  },
+  {
+    "area": "cpu moves algorithm",
+    "description": "cpu blocks player's win if the player has 2 marks in a winning path",
+    "steps": [
+      "Select X as player 1's mark",
+      "Start a new game vs cpu",
+      "Click the right top field",
+      "After cpu move click the right middle field",
+      "After cpu move click the left top field"
+    ],
+    "expected_result": "Cpu in first move occupies the middle field. If there is a possibility for a player's win (2 marks in path), cpu blocks the path."
+  },
+
+  {
+    "area": "cpu moves algorithm",
+    "description": "cpu has higher priority on winning move than blocking move",
+    "steps": [
+      "Select X as player 1's mark",
+      "Start a new game vs cpu",
+      "Click the right top field",
+      "After cpu move click the right middle field",
+      "After cpu move click the left top field",
+      "After cpu move click the left bottom field"
+    ],
+    "expected_result": "Cpu has higher priority on finishing the game than blocking the player. Cpu chooses winning move."
+  },
+
+  {
+    "area": "restart button",
+    "description": "Restart button should open the finish game panel",
+    "steps": [
+      "Open menu window",
+      "Start game (random settings)",
+      "Click restart button"
+    ],
+    "expected_result": "Restart button should be visible on the game board (right top corner) - step 2. After clicking restart button, finish game panel should be visible and game fields are not clickable. There are 2 options on finish game panel: 1)YES RESTART ; 2)NO, CANCEL."
+  },
+  {
+    "area": "restart button",
+    "description": "After clicking 'NO, CANCEL' decision, game is continued",
+    "steps": [
+      "Open menu window",
+      "Start game vs player (random player 1 mark)",
+      "Play a few rounds to have in all stats (x wins, o wins, ties) a value at least 1",
+      "Fill one or two random fields in another game (to set O's turn)",
+      "Click restart button",
+      "Click button 'NO CANCEL'"
+    ],
+    "expected_result": "After clicking 'NO, CANCEL' button, finish game panel disapperas and game is continued. Game fields are clickable again. The turn and game stats are not reset."
+  },
+  {
+    "area": "restart button",
+    "description": "After clicking 'YES, RESTART', game is finished and menu window with default settings appears",
+    "steps": [
+      "Open menu window",
+      "Select player 1's mark O",
+      "Start a new game vs player",
+      "Play a few rounds to have in all stats (x wins, o wins, ties) a value at least 1",
+      "Fill one random field in another game",
+      "Click restart button",
+      "Click button 'YES, RESTART'",
+      "Start a new game vs player"
+    ],
+    "expected_result": "After clicking 'YES, RESTART button, the game is over. The app moves to the menu window. Player's mark is selected X again. After starting new game, game fields are empty, game stats are equal 0 and there is X's turn"
+  },
+
+  {
+    "area": "finish game",
+    "description": "Finishing game causes that finish game panel appears and if there is a winner, winner' mark increments in next round",
+    "steps": [
+      "Open menu window",
+      "Select player 1's mark X",
+      "Start a new game vs player",
+      "Play a round to achieve a tie (row 1: X O X, row 2: O O X, row 3: X X O)",
+      "Click 'NEXT ROUND' button",
+      "Play a round to X's 1 win (row 1: X X X, row 2: empty O O, row 3: empty empty empty)",
+      "Click 'NEXT ROUND' button",
+      "Play a round to achieve O's win (row 1: O O empty, row 2: empty O X, empty, row 3: O empty empty)",
+      "Click 'NEXT ROUND' button"
+    ],
+    "expected_result": "'NEXT ROUND' button casues starting a new game and the winner's mark score incrementing. If there is a winner, finish game panel shows winning player and winner's mark, the fields of winning path are highlighted as well. Game stats show: X (PLAYER 1): 1, TIES: 1, O (PLAYER 2): 1"
+  },
+
+  {
+    "area": "finish game",
+    "description": "After clicking 'QUIT' button on finish game panel, menu window appears and game stats are reset",
+    "steps": [
+      "Open menu window",
+      "Select player 1's mark O",
+      "Start a new game vs player",
+      "Play a round to achieve a tie (row 1: O X O, row 2: X X O, row 3: X O X)",
+      "Click 'NEXT ROUND' button",
+      "Play a round to achieve X's win (row 1: O O X, row 2: O X empty, row 3: X O X)",
+      "Click 'NEXT ROUND' button",
+      "Play a round to achieve O's win (row 1: O O O, row 2: O X X, row 3: X O X)",
+      "Click 'QUIT' button",
+      "Start a new game vs player"
+    ],
+    "expected_result": "'QUIT' button causes that game is over and menu window appears. After starting a new game, game stats have value 0."
   },
 
   {

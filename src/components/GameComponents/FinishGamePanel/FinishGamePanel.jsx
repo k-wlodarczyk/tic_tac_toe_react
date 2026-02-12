@@ -16,7 +16,10 @@ export default function FinishGamePanel({
   return (
     <div className={styles.panelOverlay}>
       <div className={styles.finishGamePanel} data-testid="finish-game-panel">
-        <p className={clsx("heading-xs", styles.additionalText)}>
+        <p
+          className={clsx("heading-xs", styles.additionalText)}
+          data-testid="finish-game-panel-additional-text"
+        >
           {additionalText}
         </p>
         <p
@@ -24,6 +27,7 @@ export default function FinishGamePanel({
             [styles.textWinsX]: winningFigure && winningFigure === "x",
             [styles.textWinsO]: winningFigure && winningFigure === "o",
           })}
+          data-testid="finish-game-panel-primary-text"
         >
           {winningFigure && (
             <img
