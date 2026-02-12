@@ -416,7 +416,7 @@ test.describe("restart button", () => {
 
     const fields = await gameFields.locator("button").all();
 
-    test.step("All game fields are empty", async () => {
+    await test.step("All game fields are empty", async () => {
       for (const field of fields) {
         await expect(field.locator("img")).not.toBeVisible();
       }
@@ -489,7 +489,7 @@ test.describe("finish game", () => {
       await field.nth(6).click();
     });
 
-    test.step("Finish game panel has correct data - tie", async () => {
+    await test.step("Finish game panel has correct data - tie", async () => {
       await expect(finishGamePanel).toBeVisible();
 
       await expect(finishGamePanelPrimaryText).toHaveText("round tied");
@@ -506,7 +506,7 @@ test.describe("finish game", () => {
 
     const fields = await gameFields.locator("button").all();
 
-    test.step("All game fields are empty", async () => {
+    await test.step("All game fields are empty", async () => {
       for (const field of fields) {
         await expect(field.locator("img")).not.toBeVisible();
       }
