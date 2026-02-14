@@ -26,7 +26,7 @@ export default function MediaLinks() {
       </a>
       <a
         className={clsx("heading-xs", styles.mediaLink)}
-        href="https://github.com/k-wlodarczyk/tic_tac_toe_react"
+        href="https://github.com/k-wlodarczyk/tic_tac_toe_react/actions/workflows/playwright.yml"
         target="_blank"
       >
         Playwright report
